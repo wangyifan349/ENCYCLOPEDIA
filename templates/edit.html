@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}编辑词条 {{ title }} - 简易百科{% endblock %}
+
+{% block content %}
+<h1>编辑词条：{{ title }}</h1>
+<form method="post" novalidate>
+  <!-- 内容编辑框 -->
+  <div class="mb-3">
+    <label for="contentInput" class="form-label">词条内容（Markdown格式）</label>
+    <textarea
+      class="form-control"
+      id="contentInput"
+      name="content"
+      rows="12"
+      placeholder="编辑词条内容，支持 Markdown"
+      required
+    >{{ content }}</textarea>
+  </div>
+
+  <!-- 提交按钮 -->
+  <button type="submit" class="btn btn-primary">保存修改</button>
+  <a href="{{ url_for('view_entry', title=title) }}" class="btn btn-secondary ms-2">取消并返回</a>
+</form>
+{% endblock %}
