@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}创建新词条 - 简易百科{% endblock %}
+
+{% block content %}
+<h1>创建新词条</h1>
+<form method="post" novalidate>
+  <!-- 词条名称输入 -->
+  <div class="mb-3">
+    <label for="titleInput" class="form-label">词条名称</label>
+    <input
+      type="text"
+      class="form-control"
+      id="titleInput"
+      name="title"
+      placeholder="请输入词条名称"
+      value="{{ title }}"
+      required
+    />
+    <div class="form-text">词条名称不能重复且不能为空。</div>
+  </div>
+
+  <!-- 词条内容编辑框 -->
+  <div class="mb-3">
+    <label for="contentInput" class="form-label">词条内容（Markdown格式）</label>
+    <textarea
+      class="form-control"
+      id="contentInput"
+      name="content"
+      rows="10"
+      placeholder="请输入词条内容，支持 Markdown"
+      required
+    >{{ content }}</textarea>
+  </div>
+
+  <!-- 提交按钮 -->
+  <button type="submit" class="btn btn-success">创建词条</button>
+  <a href="{{ url_for('index') }}" class="btn btn-secondary ms-2">取消并返回</a>
+</form>
+{% endblock %}
